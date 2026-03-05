@@ -11,22 +11,6 @@ Approach this task **iteratively** for structured development:
 
 ---
 
-## Important
-
-1. **Commit Format** — use this commit format:
-
-   ```bash
-   git add .
-   git commit -m "[iterX] Your commit message"
-   git push
-   ```
-
-2. Please do not use AI. If you need assistance, you may refer to **sample solution code from last Monday** as a reference (**branches 6-7**): [GitHub Repository](https://github.com/tx00-resources-en/week7-fepp-en).
-
-3. We will use only one branch and alternate the driver/navigator role after each iteration.
-
----
-
 ## Deliverables
 
 1. **Code** for **API V2** (*with* authentication)  
