@@ -11,6 +11,7 @@
   - **Iteration 4:** Writing **API Tests**
 
 > Later, during Part 2, we will add **user administration** and **protect** the routes. 
+> Clone [the starter repository](https://github.com/tx00-resources-en/w7-extra-activity) into a separate folder.
 
 ---
 
