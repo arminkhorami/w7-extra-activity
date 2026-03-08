@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const propertyRouter = require('./routes/propertyRouter');
 const { unknownEndpoint, errorHandler, requestLogger } = require('./middleware/customMiddleware');
-
+const userRoutes = require("./routes/userRoutes");
 const app = express();
 
 // Middleware
@@ -12,7 +12,7 @@ app.use(requestLogger);
 
 // Routes
 app.use('/api/properties', propertyRouter);
-
+app.use("/api/users", userRoutes);
 // Error handling
 app.use(unknownEndpoint);
 app.use(errorHandler);
