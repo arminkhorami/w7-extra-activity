@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const authMiddleware = require("../middleware/authMiddleware");
+
 const {
   getAllProperties,
   createProperty,
@@ -9,18 +11,18 @@ const {
 } = require("../controllers/propertyControllers");
 
 // GET /api/properties
-router.get("/", getAllProperties);
+router.get("/", getAllProperties, authMiddleware);
 
 // POST /api/properties
-router.post("/", createProperty);
+router.post("/", authMiddleware, createProperty);
 
 // GET /api/properties/:propertyId
-router.get("/:propertyId", getPropertyById);
+router.get("/:propertyId", authMiddleware, getPropertyById);
 
 // PUT /api/properties/:propertyId
-router.put("/:propertyId", updateProperty);
+router.put("/:propertyId", authMiddleware, updateProperty);
 
 // DELETE /api/properties/:propertyId
-router.delete("/:propertyId", deleteProperty);
+router.delete("/:propertyId", authMiddleware, deleteProperty);
 
 module.exports = router;
