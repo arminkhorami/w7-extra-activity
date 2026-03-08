@@ -2,27 +2,37 @@ const Property = require("../models/propertyModel");
 
 // GET /api/properties
 const getAllProperties = async (req, res) => {
-  res.send("getAllProperties");
+  const properties = await Property.find();
+  res.json(properties);
 };
 
 // POST /api/properties
 const createProperty = async (req, res) => {
-  res.send("createProperty");
+  const property = new Property(req.body); // user send info
+  await property.save(); //save in MongoDB
+  res.status(201).json(property); // send back
 };
 
 // GET /api/properties/:propertyId
 const getPropertyById = async (req, res) => {
-  res.send("getPropertyById");
+  const property = await Property.findById(req.params.propertyId);
+  res.json(property);
 };
 
 // PUT /api/properties/:propertyId
 const updateProperty = async (req, res) => {
-  res.send("updateProperty");
+  const property = await Property.findByIdAndUpdate(
+    req.params.propertyId,
+    req.body,
+    { new: true }
+  );
+  res.json(property);
 };
 
 // DELETE /api/properties/:propertyId
 const deleteProperty = async (req, res) => {
-  res.send("deleteProperty");
+  await Property.findByIdAndDelete(req.params.propertyId);
+  res.json({ message: "Property deleted" });
 };
 
 module.exports = {
