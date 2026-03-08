@@ -1,14 +1,34 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user, setUser }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/login");
+  };
+
   return (
-    <nav className="navbar">
-      <h1>Property Listings</h1>
+    <div className="navbar">
+      <h1>PropertyApp</h1>
       <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/add-property">Add Property</Link>
+        {user ? (
+          <>
+            <span>{user.email}</span>
+            <Link to="/">Home</Link>
+            <Link to="/add-property">Add Property</Link>
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+          </>
+        )}
       </div>
-    </nav>
+    </div>
   );
 };
 
